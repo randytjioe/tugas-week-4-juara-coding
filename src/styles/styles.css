@@ -1,0 +1,21 @@
+/* styles.css */
+body {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  justify-content: center;
+}
+
+.login h2 {
+  margin-bottom: 20px;
+}
+
+.login .form-group {
+  margin-bottom: 20px;
+}
+
+.body {
+  justify-content: center;
+}
