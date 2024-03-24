@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 import NavBar from "./Navbar";
@@ -9,6 +10,7 @@ const ProductCatalog = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -23,6 +25,8 @@ const ProductCatalog = () => {
     if (user) {
       fetchProducts();
       setIsLoading(false);
+    } else {
+      navigate(`/login`, { replace: true });
     }
   }, [user]);
 
