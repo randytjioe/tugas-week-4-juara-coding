@@ -9,7 +9,6 @@ import NavBar from "./Navbar";
 const ProductCatalog = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,14 +20,15 @@ const ProductCatalog = () => {
         console.error("Error fetching products:", error);
       }
     };
-
+    const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       fetchProducts();
       setIsLoading(false);
     } else {
       navigate(`/login`, { replace: true });
+      console.log(user);
     }
-  }, [user]);
+  }, []);
 
   const handleAddToCart = (productId) => {
     const productToAdd = products.find((product) => product.id === productId);

@@ -8,10 +8,10 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const login = async (email, password) => {
+  const login = async (username, password) => {
     try {
-      const response = await axios.post("https://reqres.in/api/login", {
-        email,
+      const response = await axios.post("https://fakestoreapi.com/auth/login", {
+        username,
         password,
       });
       setUser(response.data);
